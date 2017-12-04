@@ -21,6 +21,10 @@ const argv = optimist
         default: 10,
         describe: 'maximum number of tcp sockets each client is allowed to establish at one time (the tunnels)'
     })
+    .options('base-hostname', {
+        default: '',
+        describe: 'full domain name of the server, required when the name is longer the 2 (like: localtunnel.example.com)'
+    })
     .argv;
 
 if (argv.help) {

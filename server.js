@@ -40,10 +40,14 @@ const stats = {
 
 // handle proxying a request to a client
 // will wait for a tunnel socket to become available
-function maybe_bounce(req, res, sock, head) {
+function maybe_bounce(req, res, sock, head, opt) {
     // without a hostname, we won't know who the request is for
     const hostname = req.headers.host;
     if (!hostname) {
+        return false;
+    }
+
+    if (opt && opt.base-hostname && opt.base-hostname.toLowerCase() === hostname.toLowerCase()) {
         return false;
     }
 
@@ -328,7 +332,7 @@ module.exports = function(opt) {
             console.error('ws socket', err);
         });
 
-        if (maybe_bounce(req, null, socket, head)) {
+        if (maybe_bounce(req, null, socket, head, opt)) {
             return;
         };
 

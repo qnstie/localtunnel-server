@@ -54,5 +54,5 @@ docker run -d \
     --restart always \
     --name localtunnel \
     --net host \
-    defunctzombie/localtunnel-server:latest --port 3000
+    defunctzombie/localtunnel-server:latest --port 3000 --base-hostname localhost.example.com
 ```
