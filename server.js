@@ -316,7 +316,7 @@ module.exports = function(opt) {
         });
 
         debug('request %s', req.url);
-        if (maybe_bounce(req, res, null, null)) {
+        if (maybe_bounce(req, res, null, null, opt)) {
             return;
         };
 
