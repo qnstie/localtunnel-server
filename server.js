@@ -47,11 +47,19 @@ function maybe_bounce(req, res, sock, head, opt) {
         return false;
     }
 
-    if (opt && opt.base_hostname && opt.base_hostname.toLowerCase() === hostname.toLowerCase()) {
-        return false;
+    var subdomain;
+
+    if (opt && opt.base_hostname) {
+        const re = new RegExp('(([a-z0-9]+).)?' + opt.base_hostname + '(:[0-9]*)?', 'i');
+        const matches = re.exec(hostname);
+
+        if (matches) {
+            subdomain = matches[2];
+        }
+    } else {
+        subdomain = tldjs.getSubdomain(hostname);
     }
 
-    const subdomain = tldjs.getSubdomain(hostname);
     if (!subdomain) {
         return false;
     }
