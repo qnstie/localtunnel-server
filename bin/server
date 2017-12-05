@@ -35,7 +35,7 @@ if (argv.help) {
 const server = require('../server')({
     max_tcp_sockets: argv['max-sockets'],
     secure: argv.secure,
-    base-hostname: argv.base-hostname
+    base_hostname: argv['base-hostname']
 });
 
 server.listen(argv.port, () => {

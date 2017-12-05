@@ -47,7 +47,7 @@ function maybe_bounce(req, res, sock, head, opt) {
         return false;
     }
 
-    if (opt && opt.base-hostname && opt.base-hostname.toLowerCase() === hostname.toLowerCase()) {
+    if (opt && opt.base_hostname && opt.base_hostname.toLowerCase() === hostname.toLowerCase()) {
         return false;
     }
 
